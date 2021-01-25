@@ -1,0 +1,50 @@
+https://www.youtube.com/watch?v=PDaGJ397Ing
+Laravel with Docker
+
+sudo apt-get install phpmyadmin
+
+https://www.youtube.com/watch?v=UHSipe7pSac
+Todo List App with Laravel and Vue.js 
+
+
+https://www.youtube.com/watch?v=8Fi_F5doCvI
+Building a Laravel 8 CRUD Web Application - 04 - Database setup
+
+LEFT OFF HERE, EDWARD AND AUDREY WERE BOTHERING ME. SO I HAVE TO STOP HERE.
+NEXT, LOOK AT THE VIDEO AND INTALL PHPMYADMIN TO THE DOCKER Laravel
+https://www.youtube.com/watch?v=ozKxWsojYJ4
+AT 0:37
+
+docker-compose exec php php /var/www/html/artisan migrate
+ERROR: No such service: php
+
+same as "php artisan migrate" but inside the container
+./vendor/bin/sail artisan migrate
+
+TO REBUILD MIGRATION:
+./vendor/bin/sail artisan migrate:fresh
+
+INSTALL NPM IN DOCKER CONTAINER
+./vendor/bin/sail npm install
+
+Access laravel tinker in container:
+./vendor/bin/sail artisan tinker
+
+# CREATE A USER with tinker
+>>> $user = User::create(['email' => 'test@email.com', 'name' => 'test name', 'password' => Hash::make('password')]);
+
+EXIT THE COMMAND:
+>>> exit 
+
+#PHPMYADMIN
+
+1. you will need to bring the container down
+
+2. open docker-compose.yml file and add the following code at the bottom of the file
+
+
+
+
+
+
+
