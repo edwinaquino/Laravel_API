@@ -65,6 +65,111 @@ user: root
 pass:  // empty
 
 
+# CREATE AN API with DATABSE:
+https://www.youtube.com/watch?v=qiW6LvZXxz0
+Laravel 8 API Server in 9 Minutes!
+
+FIND ALL THE ARTISAN MAKE COMMANds AVAILABLE:
+php artisan | grep make
+
+
+
+php artisan make:model Tareas
+Will create: Models>Tareas.php
+
+$ php artisan make:seeder TareasTableSeeder
+Will create: migrations>database>seeders>TareasTableSeeder.php
+
+$ php artisan make:controller TareasController
+Will create: Http>Controllers>TareasController.php
+
+$ php artisan make:migration create_tareas_table --table=tareas
+Will create: migrations>database>migrations>2021_01_27_042427_create_tareas_table.php
+
+
+OPEN DIRECTORY IN CODE
+code .
+
+Open 2021_01_27_042427_create_tareas_table.php
+Add the following in the up() function to create table
+https://laravel.com/docs/8.x/migrations#creating-tables
+##########
+    public function up()
+    {
+        Schema::create('tareas', function (Blueprint $table) {
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('done')->nullable();
+            $table->integer('category_id')->nullable();
+            $table->integer('user_id')->nullable();
+        });
+    }
+############
+
+START DOCKER SERVER:
+sail artisan migrate:status
++------+------------------------------------------------+-------+
+| Ran? | Migration                                      | Batch |
++------+------------------------------------------------+-------+
+| Yes  | 2014_10_12_000000_create_users_table           | 1     |
+| Yes  | 2014_10_12_100000_create_password_resets_table | 1     |
+| Yes  | 2019_08_19_000000_create_failed_jobs_table     | 1     |
+| Yes  | 2021_01_27_042427_create_tareas_table          | 2     |
++------+------------------------------------------------+-------+
+
+# RUN seeder
+OPEN:
+migrations>database>migrations>TareasTableSeeder.php
+CHANGE THE run() functio
+###############
+    public function run()
+    {
+        for ($i=0; $i < 50; $i++) { 
+            Tareas::create([
+                'title'=> 'Commodo aliquip amet dolore aliqua Lorem in et tempor. Nisi est fugiat excepteur do excepteur nostrud sit aliqua ipsum veniam ea. Duis Lorem cupidatat culpa tempor veniam veniam qui aliquip aliquip aliquip quis elit laboris. Ad Lorem laboris cillum enim eiusmod aute nisi nulla dolor proident est enim. Et eu culpa excepteur non enim minim nisi ea exercitation amet ullamco.',
+                'done'=>random_int(0,1)
+            ]);
+        }
+    }
+
+OPEN Models>Tareas.php ADD:   AFTER  use HasFactory;
+public $timestamps = false;
+
+
+sail artisan db:seed --class=TareasTableSeeder
+
+
+
+################
+
+
+
+
+
+SHOULD LOOK LIKE THIS:
++------+------------------------------------------------+-------+
+| Ran? | Migration                                      | Batch |
++------+------------------------------------------------+-------+
+| Yes  | 2014_10_12_000000_create_users_table           | 1     |
+| Yes  | 2014_10_12_100000_create_password_resets_table | 1     |
+| Yes  | 2019_08_19_000000_create_failed_jobs_table     | 1     |
+| No   | 2021_01_27_042427_create_tareas_table          |       |
++------+------------------------------------------------+-------+
+
+NOW MIGRATE:
+sail artisan migrate
+
+
+
+
+
+https://www.youtube.com/watch?v=SLEWYV43Jxo
+sail artisan make:seeder MembersSeeder
+
+
+
+
+
 
 
 
