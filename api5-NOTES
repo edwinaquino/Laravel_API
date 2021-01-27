@@ -40,7 +40,29 @@ EXIT THE COMMAND:
 
 1. you will need to bring the container down
 
-2. open docker-compose.yml file and add the following code at the bottom of the file
+2. open docker-compose.yml file and add the following code after mailhog
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        container_name: phpmyadmin
+        depends_on: 
+            - mysql
+        ports: 
+            - "8081:80"
+        environment: 
+            PMA_HOST: mysql
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+        networks: 
+            - sail
+
+
+
+4. http://localhost:8081/index.php
+
+5. NEXT: figure out the login and password
+FOUND IT: 
+user: root 
+pass:  // empty
 
 
 
