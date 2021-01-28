@@ -44,6 +44,7 @@ Clone this repository
 ```git clone https://github.com/edwinaquino/Laravel_API.git```
 
 Start the project in a docker container with Laravel Sail
+
 ```./vendor/bin/sail up -d```
 
 Once all the dependencies have been downloaded and installed in the Docker container the server will start, you can access your server by going to the following URL in your browser:
